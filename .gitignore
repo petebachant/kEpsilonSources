@@ -1,0 +1,5 @@
+*~
+*.ini
+*.dep
+lnInclude
+Make/linux*
