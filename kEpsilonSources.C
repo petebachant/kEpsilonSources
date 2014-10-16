@@ -27,7 +27,6 @@ License
 #include "addToRunTimeSelectionTable.H"
 
 #include "backwardsCompatibilityWallFunctions.H"
-#include "fvIOoptionList.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -138,7 +137,7 @@ kEpsilonSources::kEpsilonSources
 
     printCoeffs();
 
-    #include "createFvOptions.H"
+    fvOptions(U.mesh());
 }
 
 

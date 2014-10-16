@@ -50,6 +50,7 @@ SourceFiles
 #define kEpsilonSources_H
 
 #include "RASModel.H"
+#include "fvIOoptionList.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -86,6 +87,8 @@ protected:
             volScalarField k_;
             volScalarField epsilon_;
             volScalarField nut_;
+
+        fv::IOoptionList fvOptions;
 
 
 public:
