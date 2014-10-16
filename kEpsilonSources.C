@@ -252,13 +252,14 @@ void kEpsilonSources::correct()
      ==
         C1_*G*epsilon_/k_
       - fvm::Sp(C2_*epsilon_/k_, epsilon_)
+      + fvOptions(epsilon_)
     );
 
     epsEqn().relax();
-
+    fvOptions.constrain(epsEqn());
     epsEqn().boundaryManipulate(epsilon_.boundaryField());
-
     solve(epsEqn);
+    fvOptions.correct(epsilon_);
     bound(epsilon_, epsilonMin_);
 
 
@@ -271,10 +272,13 @@ void kEpsilonSources::correct()
      ==
         G
       - fvm::Sp(epsilon_/k_, k_)
+      + fvOptions(k_)
     );
 
     kEqn().relax();
+    fvOptions.constrain(kEqn());
     solve(kEqn);
+    fvOptions.correct(k_);
     bound(k_, kMin_);
 
 
