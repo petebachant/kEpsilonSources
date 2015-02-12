@@ -127,7 +127,8 @@ kEpsilonSources::kEpsilonSources
             IOobject::AUTO_WRITE
         ),
         autoCreateNut("nut", mesh_)
-    )
+    ),
+    fvOptions(U.mesh())
 {
     bound(k_, kMin_);
     bound(epsilon_, epsilonMin_);
@@ -136,8 +137,6 @@ kEpsilonSources::kEpsilonSources
     nut_.correctBoundaryConditions();
 
     printCoeffs();
-
-    fvOptions(U.mesh());
 }
 
 
